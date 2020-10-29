@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import Axios from "axios";
 
 const ContactForm = () => {
   const [data, setData] = useState();
@@ -12,8 +13,15 @@ const ContactForm = () => {
       message: "",
     },
   });
+
+  const axiosPost = (postData) => {
+    Axios.post("https://reqres.in/api", postData);
+  };
   const onSubmit = (data) => {
     setData(data);
+    //axiosPost(data)
+    //.then((resp) => console.log(resp))
+    //.catch((err) => console.log(err));
     reset();
   };
 
