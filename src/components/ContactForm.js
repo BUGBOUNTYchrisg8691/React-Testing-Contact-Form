@@ -11,17 +11,16 @@ const ContactForm = () => {
       lastName: "",
       email: "",
       message: "",
+      id: new Date().getTime(),
+      avatar: "",
     },
   });
 
-  const axiosPost = (postData) => {
-    Axios.post("https://reqres.in/api", postData);
-  };
   const onSubmit = (data) => {
     setData(data);
-    //axiosPost(data)
-    //.then((resp) => console.log(resp))
-    //.catch((err) => console.log(err));
+    Axios.post("https://reqres.in/api/users", data)
+      .then((resp) => console.log("Success", resp))
+      .catch((err) => console.log("Failed", err));
     reset();
   };
 
